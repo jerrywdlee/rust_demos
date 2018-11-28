@@ -1,0 +1,6 @@
+[package]
+name = "rust_demos"
+version = "0.1.0"
+authors = ["Jerry Lee <jerrywdlee@gmail.com>"]
+
+[dependencies]
