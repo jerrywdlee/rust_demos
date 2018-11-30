@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "cargo build --target wasm32-unknown-unknown && cp target/wasm32-unknown-unknown/debug/wasm_demo.wasm public/",
     "start": "ruby -run -e httpd ./public -p 8080",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
