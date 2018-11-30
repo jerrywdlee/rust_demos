@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Wasm Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    .label, .ans {
+      display: inline-block;
+      width: 120px;
+    }
+    input {
+      min-width: 80px;
+    }
+  </style>
+</head>
+<body>
+  <h1 class="h1">Wasm Demo</h1>
+  <!--
+  <div class="content con-01">
+    <h2 class="h2">Fibonacci</h2>
+    <p>
+      <label class="label" for="fibLen">Length: </label>
+      <input type="number" name="fibLen" id="fibLen" min="0" max="9999">
+    </p>
+    <p>
+      <span class="ans" id="fibAnsJs">Ans / Time</span>
+      <button>Satrt JS</button>
+    </p>
+    <p>
+      <span class="ans" id="fibAnsWasm">Ans / Time</span>
+      <button>Satrt Wasm</button>
+    </p>
+  </div>
+  -->
+
+  <div class="content con-02">
+    <h2 class="h2">For Loop</h2>
+    <p>
+      <label class="label" for="forLen">Length(exp): </label>
+      <input type="number" name="forLen" id="forLen" min="0" max="10">
+    </p>
+    <p>
+      <span class="ans" id="forAnsJs">Len / Time</span>
+      <button onclick="runForLoopJs()">Satrt JS</button>
+    </p>
+    <p>
+      <span class="ans" id="forAnsWasm">Len / Time</span>
+      <button>Satrt Wasm</button>
+    </p>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
