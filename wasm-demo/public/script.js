@@ -4,7 +4,7 @@ let WASM = null;
 
 const loadWasm = async url => {
   const wasmRaw = await fetch(url).then(res => res.arrayBuffer());
-  const wasmObj = await WebAssembly.instantiate(wasmRaw, {});
+  const wasmObj = await WebAssembly.instantiate(wasmRaw, { env: { mathSin: Math.sin } });
   return wasmObj.instance.exports;
 }
 
@@ -41,6 +41,11 @@ const forLoopWasm = async (n, wasm) => {
   return { res, cost, n };
 }
 
+const doubleSinWasm = async (n, wasm) => {
+  const res = await wasm.doubleSin(n);
+  return { res, n }
+}
+
 function runForLoopJs() {
   const n = parseInt(document.querySelector('#forLen').value);
   forLoopJs(Math.pow(10, n)).then(ans => {
@@ -55,4 +60,24 @@ function runForLoopWasm() {
     console.log(ans);
     document.querySelector('#forAnsWasm').innerText = `10^${n} / ${ans.cost}ms`;
   });
+}
+
+function runDoubleSinJs() {
+  const n = parseInt(document.querySelector('#doubleSin').value);
+  const ans = { res: 2 * Math.sin(n), n };
+  console.log(ans);
+  document.querySelector('#doubleSinJs').innerText = `${round(ans.res, 3)}`;
+}
+
+function runDoubleSinWasm() {
+  const n = parseInt(document.querySelector('#doubleSin').value);
+  doubleSinWasm(n, WASM).then(ans => {
+    console.log(ans);
+    document.querySelector('#doubleSinWasm').innerText = `${round(ans.res, 3)}`;
+  })
+}
+
+function round(n, index) {
+  const times = Math.pow(10, index);
+  return Math.round(n * times) / times;
 }

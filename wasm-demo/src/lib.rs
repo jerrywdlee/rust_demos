@@ -19,3 +19,15 @@ pub extern "C" fn forLoop(n: f64) -> f64 {
     }
     x as f64
 }
+
+#[no_mangle]
+extern "C" {
+    fn mathSin(_: f64) -> f64;
+}
+
+#[no_mangle]
+pub extern "C" fn doubleSin(n: f64) -> f64 {
+    unsafe {
+        2.0 * mathSin(n)
+    }
+}
