@@ -13,7 +13,8 @@ pub extern "C" fn hoge(v: f64) -> f64 {
 #[no_mangle]
 pub extern "C" fn forLoop(n: f64) -> f64 {
     let mut x = 0u64;
-    for i in 0..10u64.pow(n as u32) {
+    let max = 10u64.pow(n as u32);
+    for i in 0..max {
         x = i
     }
     x as f64
