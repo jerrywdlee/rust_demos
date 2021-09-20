@@ -1,6 +1,7 @@
 mod utils;
 
 use wasm_bindgen::prelude::*;
+use wasm_bindgen_futures::{JsFuture, future_to_promise};
 
 // When the `wee_alloc` feature is enabled, use `wee_alloc` as the global
 // allocator.
@@ -21,4 +22,11 @@ pub fn greet() {
 #[wasm_bindgen]
 pub fn add(a: i32, b: i32) -> i32 {
    return a + b;
+}
+
+#[wasm_bindgen]
+pub async fn async_add(a: i32, b:i32) -> Result<i32, JsValue> {
+    let res = a + b;
+
+    Ok(res)
 }
